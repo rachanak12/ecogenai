@@ -97,8 +97,11 @@ if distance > 0 and electricity > 0 and meals > 0 and waste > 0:
          
         myVal = total_emissions
         world = "World"
-        country_val = df3.query("Entity == @country")["Annual CO₂ emissions (per capita)"]
         country_val = 15.5
+        filtered_df= df3.query("Entity == @country")
+        if filtered_df.shape[0] == 1:
+            country_val = filtered_df["Annual CO₂ emissions (per capita)"].values[0]
+       
         world = 4.8
         fig, ax = plt.subplots()
 
